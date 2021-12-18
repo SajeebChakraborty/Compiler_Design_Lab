@@ -83,7 +83,7 @@ int main()
                                cnt++;
                            }
                     }
-                    if(cnt+2==len)
+                    if(cnt+1==len)
                     {
                         cout<<"Integer variable"<<endl;
                     }
