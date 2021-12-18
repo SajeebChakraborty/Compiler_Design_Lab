@@ -85,7 +85,7 @@ int main()
             num_cnt++;
 
         }
-        else
+        else if((str[i]>='a' && str[i]<='z')||(str[i]>='A' && str[i]<='Z')||str[i]=='_')
         {
 
             char_cnt++;
@@ -98,14 +98,15 @@ int main()
     {
         cout << "Integer" << endl;
     }
-    else if(num_cnt==len-1 && str[0]>='0' && str[0]<='9')
-    {
-        cout << "Float" << endl;
-    }
-    else if(((str[0]>='a' && str[0]<='z') || (str[0]>='A' && str[0]<='Z')) && num_cnt<len)
+     else if(((str[0]>='a' && str[0]<='z') || (str[0]>='A' && str[0]<='Z')) && num_cnt+char_cnt==len)
     {
         cout << "Identifier" << endl;
     }
+    else if(num_cnt==len-1 && (str[0]>='0' && str[0]<='9'||str[0]=='.')&&char_cnt==0)
+    {
+        cout << "Float" << endl;
+    }
+
     else
     {
          cout << "Invalid Input" << endl;

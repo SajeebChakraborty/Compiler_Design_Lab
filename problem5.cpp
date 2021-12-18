@@ -17,7 +17,7 @@ int main()
 
     if(str[0]=='+' || str[0]=='-' || str[0]=='*' || str[0]=='/' || str[0]=='^' || str[len-1]=='+' || str[len-1]=='-' || str[len-1]=='*' || str[len-1]=='/' || str[len-1]=='(')
     {
-        cout << "Invalid" << endl;
+        cout << "Invalid 2" << endl;
         return 0;
     }
     for(int i=0;i<len;i++)
@@ -26,7 +26,7 @@ int main()
         if((str[i]>='a' && str[i]<='z') || (str[i]>='A' && str[i]<='Z'))
         {
 
-            cout << "Invalid" << endl;
+            cout << "Invalid 3" << endl;
             return 0;
 
 
@@ -37,7 +37,7 @@ int main()
             if(str[i+1]=='+' || str[i+1]=='-' || str[i+1]=='*' || str[i+1]=='/')
             {
 
-                cout << "Invalid" << endl;
+                cout << "Invalid 4" << endl;
                 return 0;
 
             }
@@ -52,28 +52,28 @@ int main()
         }
         else if(str[i]=='(' && i+2<len)
         {
-
+            temp2=i;
             if(str[i+1]==')')
             {
 
-                cout << "Invalid" << endl;
+                cout << "Invalid 6" << endl;
                 return 0;
 
             }
             else if(str[i+1]=='*' || str[i+1]=='/')
             {
 
-                if(str[i+2]=='+' || str[i+2]=='-' || str[i+2]=='*' || str[i+2]=='/')
+                if(str[i+2]=='+' || str[i+2]=='-' || str[i+2]=='*' || str[i+2]=='/' || str[i+2]==')')
                 {
 
-                    cout << "Invalid" << endl;
+                    cout << "Invalid 2" << endl;
                     return 0;
 
                 }
                 else
                 {
 
-                    cout << "Invalid" << endl;
+                    cout << "Invalid 2" << endl;
                     return 0;
 
                 }
@@ -86,7 +86,7 @@ int main()
                 for(int j=i;j<len;j++)
                 {
 
-                    if(str[i]==')')
+                    if(str[j]==')')
                     {
                         cnt++;
                     }
@@ -95,7 +95,7 @@ int main()
                 }
                 if(cnt==0)
                 {
-                    cout << "Invalid" << endl;
+                    cout << "Invalid 5" << endl;
                     return 0;
                 }
 
@@ -108,7 +108,7 @@ int main()
     }
     if(temp<temp2)
     {
-        cout<<"Invalid"<<endl;
+        cout<<"Invalid 7"<<endl;
         return 0;
     }
     cout<<"valid"<<endl;

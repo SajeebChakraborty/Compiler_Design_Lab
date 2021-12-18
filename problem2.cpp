@@ -1,119 +1,167 @@
 #include<bits/stdc++.h>
-#include<iostream>
-#include<cstring>
+#include <iostream>
+#include <cstring>
 #include<string.h>
-
 using namespace std;
-
 int main()
 {
+
 
     cout<<"Enter -777 to terminate"<<endl;
     while(1)
     {
-    int number_cnt=0,point_cnt=0,binary_cnt=0,len;
-    string str;
-
-
-    getline(cin,str);
-    //cout << str;
-
-    len=str.length();
-
-    for(int i=0;i<=len;i++)
+        int len,i,bcnt=0,ncnt=0,fcnt=0,scnt=0,cnt=0;
+    char ch;
+    string s;
+    //cin>>s;
+    //cout<<s<<endl;
+    getline(cin,s);
+    len=s.length();
+    for(i=0;i<len;i++)
     {
-
-        if(str[i]=='0' || str[i]=='1')
+       if(s[i]>='0' && s[i]<='1')
+       {
+          bcnt++;
+       }
+        if(s[i]>='0' && s[i]<='9')
         {
-            binary_cnt++;
+            ncnt++;
         }
-        if(str[i]>='0' && str[i]<='9')
+        if(s[i]=='.')
         {
-            number_cnt++;
-        }
-        if(str[i]=='.')
-        {
-            point_cnt++;
+            fcnt++;
         }
     }
-       // cout << number_cnt << point_cnt << binary_cnt << endl;
-    //deciaml check
-    if((number_cnt+point_cnt)==len && point_cnt==0)
-    {
-
-        if(binary_cnt==len)
+        if((ncnt+fcnt)==len&&fcnt==0)
         {
 
-            cout << "binary number" << endl;
+            if(bcnt==len&&s[0]=='0')
+
+            {
+                cout<<"binary number"<<endl;
+            }
+            else if(ncnt==len&&s[0]>='1')
+            {
+                if(len<=4 )
+                {
+                    cout<<"ShortInt number"<<endl;
+                }
+                else if(len>4)
+                {
+                    cout<<"LongInt number"<<endl;
+                }
+                else{
+                cout<<"Undefined"<<endl;
+            }
+
+            }
 
         }
-        else if(str[0]>='1' && len<=4)
+        else if(fcnt==1&&(fcnt+ncnt)==len&&s[0]>='1')
         {
-            cout << "shortest integer number" << endl;
-        }
-        else if(str[0]>='1' && len>=5)
-        {
-            cout << "longest number" << endl;
-        }
-        else
-        {
-          cout << "Undefined" << endl;
-        }
-
-    }
-    else if((number_cnt+point_cnt)==len && point_cnt==1)
-    {
-        //cout << "rfergf" << endl;
-        if(binary_cnt==len-1)
-        {
-              cout << "binary number" << endl;
-        }
-         else if(len<=5)
-        {
-            cout << "float number" << endl;
-        }
-        else if(len>5)
-        {
-            cout << "double number" << endl;
-        }
+           if(len<=5 )
+                {
+                    cout<<"Float number"<<endl;
+                }
 
 
-    }
-    else if ((str[0]>='a' && str[0]<='z') || (str[0]>='A' && str[0]<='Z'))
-    {
-        if((str[0]>='i' && str[0]<='n') || (str[0]>='I' && str[0]<='N'))
-        {
-            cout << "Interger variable" << endl;
-
+                else
+                {
+                    cout<<"Double number"<<endl;
+                }
         }
-        if((str[0]>='a' && str[0]<='h') || (str[0]>='a' && str[0]<='h'))
+        else if((s[0]>='a'||s[0]>='A'))
         {
-            cout << "float variable" << endl;
+            if((s[0]>='i'&&s[0]<='n')||(s[0]>='I'&&s[0]<='N'))
+            {
+                cnt=0;
+                 //cout<<"Character variable"<<endl;
+                    for(i=2;i<len;i++)
+                    {
+                        if((s[i]>='a'&&s[i]<='z')||(s[i]>='A'&&s[i]<='Z')||(s[i]>='0'&&s[i]<='9'))
+                           {
+                               cnt++;
+                           }
+                    }
+                    if(cnt+2==len)
+                    {
+                        cout<<"Integer variable"<<endl;
+                    }
+                    else
+                    {
+                        cout<<"Invalid "<<endl;
+                    }
 
-        }
-        if(str[0]>='c' && str[1]=='i' && str[2]=='_')
+            }
+            else if(s[0]=='c'&&s[1]=='h'&&s[2]=='_'&&(s[3]>='a'&&s[3]<='z'||(s[3]>='A'&&s[3]<='Z')||(s[3]>='0'&&s[3]<='9')))
+            {
+                    cnt=0;
+                    for(i=4;i<len;i++)
+                    {
+                        if((s[i]>='a'&&s[i]<='z')||(s[i]>='A'&&s[i]<='Z')||(s[i]>='0'&&s[i]<='9'))
+                           {
+                               cnt++;
+                           }
+                    }
+                    if(cnt+4==len)
+                    {
+                        cout<<"Character variable"<<endl;
+                    }
+                    else
+                    {
+                        cout<<"Invalid "<<endl;
+                    }
+            }
+            else if(s[0]=='b'&&s[1]=='n'&&s[2]=='_'&&((s[3]>='a'&&s[3]<='z')||(s[3]>='A'&&s[3]<='Z')||(s[3]>='0'&&s[3]<='9')))
+            {
+                    cnt=0;
+                    for(i=4;i<len;i++)
+                    {
+                        if((s[i]>='a'&&s[i]<='z')||(s[i]>='A'&&s[i]<='Z')||(s[i]>='0'&&s[i]<='9'))
+                           {
+                               cnt++;
+                           }
+                    }
+                    if(cnt+4==len)
+                    {
+                        cout<<"Binary variable"<<endl;
+                    }
+                    else
+                    {
+                        cout<<"Invalid "<<endl;
+                    }
+            }
+            else if((s[0]>='a'&&s[0]<='h')||(s[0]>='A'&&s[0]<='H')&&(s[1]>='o'&&s[1]<='z')||(s[1]>='O'&&s[1]<='Z'))
+            {
+                   for(i=2;i<len;i++)
+                    {
+                        if((s[i]>='a'&&s[i]<='z')||(s[i]>='A'&&s[i]<='Z')||(s[i]>='0'&&s[i]<='9'))
+                           {
+                               cnt++;
+                           }
+                    }
+                    if(cnt+2==len)
+                    {
+                        cout<<"Float variable"<<endl;
+                    }
+                    else
+                    {
+                        cout<<"Invalid "<<endl;
+                    }
+            }
+
+            else
         {
-            cout << "character variable" << endl;
-
+             cout<<"Undefined"<<endl;
         }
-         if(str[0]>='b' && str[1]=='n' && str[2]=='_')
-        {
-            cout << "binary variable" << endl;
-
         }
-
-
-    }
-    else if(str[0]=='-'&&str[1]=='7'&&str[2]=='7'&&str[3]=='7')
-    {
+       else if(s[0]=='-'&&s[1]=='7'&&s[2]=='7'&&s[3]=='7')
+       {
            return 0;
-    }
-    else
-    {
-        cout << "Undefined" << endl;
-    }
-
-
+       }
+       else
+             cout<<"Undefined"<<endl;
 
     }
+
 }
